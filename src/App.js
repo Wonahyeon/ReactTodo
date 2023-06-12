@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 import TodoTemplate from "./component/TodoTemplate";
 import TodoInsert from "./component/TodoInsert";
 import TodoList from "./component/TodoList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TodoMain from "./component/TodoMain";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -14,15 +16,7 @@ const GlobalStyle = createGlobalStyle`
     background: #e9ecef;
   }
 
-  .app-title {
-    color: gray;
-    height: 4rem;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3rem 3rem 0;
-  }
+  
 `;
 
 function App() {
@@ -67,10 +61,12 @@ function App() {
   return (
     <>
     <GlobalStyle />
-    <div className='app-title'>Todo</div>
-    <TodoTemplate >
-      <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle}/>
-    </TodoTemplate>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TodoMain/>} />
+      </Routes>
+    </BrowserRouter>
+    
 
     </>
   );

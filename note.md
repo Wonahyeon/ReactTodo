@@ -32,3 +32,6 @@ App
 
 * 리액트 단방향성 부모가 자식에게만 데이터 줄 수 있음
 TODO 오류: state 끌어올리기 해서 해결해야함 state 사용되는 공통된 최상위에 선언해야함 - TodoTemplate에 todos state 선언해야함
+
+
+https://react-icons.github.io/react-icons/icons?name=md
