@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { MdMode as AddIcon } from "react-icons/md";
@@ -7,7 +7,8 @@ import { MdFormatListBulleted as ListIcon } from "react-icons/md";
 const Title = styled.div`
   color: gray;
   height: 4rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +28,6 @@ const TodoMainWrapper = styled.div`
   `;
 
   const TodoButton = styled.div`
-    border: none;
     background: black;
     width: 6rem;
     height: 6rem;
@@ -43,18 +43,19 @@ const TodoMainWrapper = styled.div`
     }
   `;
 
-function TodoMain(props) {
+function TodoMainPage(props) {
   const navigate = useNavigate();
+
   return (
     <>
     <Title>TODO LIST</Title>
     <TodoMainWrapper>
-      <TodoButton type='button' onClick={() => {
+      <TodoButton onClick={() => {
         navigate("/todo-write");
       }}>
         <AddIcon />
       </TodoButton>
-      <TodoButton type='button' onClick={() => {
+      <TodoButton onClick={() => {
         navigate("/todo-list");
       }}>
         <ListIcon />
@@ -64,4 +65,4 @@ function TodoMain(props) {
   );
 }
 
-export default TodoMain;
+export default TodoMainPage;

@@ -51,19 +51,11 @@ const Remove = styled.div`
   }
 `;
 
-function TodoListItem({todo: {id, text, checked}, onRemove, onToggle}) {
+function TodoListItem({todo: {id, text, checked}, onRemove, onToggle, startDate, setStartDate, diffDate, setDiffdate}) {
   const deadline = new Date(2023, 9, 1);
   const today = new Date();
   const dayGap = deadline.getTime() - today.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
-
-  // props로 받았을 경우 한번에 구조 분해 할당 하는 방법
-  // const {todo: {id, text, checked}} = props;
-
-  // todo로 먼저 한번 분해해서 받았을 경우
-  // const {id, text, checked} = todo;
-
-  console.log(id, text);
 
   return (
     <TodoLsitItemWrapper>

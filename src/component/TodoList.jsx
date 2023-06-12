@@ -4,6 +4,7 @@ import TodoListItem from './TodoListItem';
 
 const TodoListWrapper = styled.div`
   min-height: 320px;
+  width: 35rem;
 `;
 
 function TodoList(props) {
