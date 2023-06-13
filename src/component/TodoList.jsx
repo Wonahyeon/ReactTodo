@@ -8,21 +8,16 @@ const TodoListWrapper = styled.div`
 `;
 
 function TodoList(props) {
-  // const todos = props.todos;
-  const {todos , onRemove, onToggle} = props;
+  const {todos,doneCount, setDoneCount,handleDoneCount, onRemove, onToggle} = props;
   return (
     <TodoListWrapper>
-      {/* <TodoListItem/>
-      <TodoListItem/>
-      <TodoListItem/> */}
-      {/* Quiz: TodoListItem으로 이루어진 배열로 변환하여 반복 렌더링 */}
       {todos.map((todo) => {
         return (
-          <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}/>
+          <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount}/>
         );
       })}
     </TodoListWrapper>
   );
 }
 
-export default TodoList;
+export default React.memo(TodoList);

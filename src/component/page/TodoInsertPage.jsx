@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const TodoInsertWrapper = styled.div`
   width: 40rem;
-  height: 25rem;
+  height: 30rem;
   margin: 0 auto;
   margin-top: 1rem;
   padding: 1rem;
@@ -35,6 +35,7 @@ const TodoInsertWrapper = styled.div`
     }
 
     .title {
+      font-size: 1.5rem;
       font-weight: bold;
       text-align: center;
       flex: 1;
@@ -42,7 +43,7 @@ const TodoInsertWrapper = styled.div`
   `;
 
 function TodoInsertPage(props) {
-  const {onInsert, value, setValue, inputEmpty, setInputEmpty, diffDate, setDiffDate, startDate, setStartDate } = props;
+  const {onInsert, value, setValue, content, setCotent,inputEmpty, setInputEmpty, endDate, setEndDate, startDate, setStartDate } = props;
   const navigate = useNavigate();
   return (
     <TodoInsertWrapper>
@@ -52,9 +53,9 @@ function TodoInsertPage(props) {
         }}/>
         <h3 className='title'>Todo 작성하기</h3>
       </TodoTitle>
-      <TodoInsert onInsert={onInsert} value={value} setValue={setValue} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} diffDate={diffDate} setDiffDate={setDiffDate} startDate={startDate} setStartDate={setStartDate}/>
+      <TodoInsert onInsert={onInsert} value={value} setValue={setValue} content={content} setCotent={setCotent} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>
     </TodoInsertWrapper>
   );
 }
 
-export default TodoInsertPage;
+export default React.memo(TodoInsertPage);

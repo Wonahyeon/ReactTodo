@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdCheckBox, MdCheckBoxOutlineBlank,MdRemoveCircleOutline } from "react-icons/md";
+import { MdMode as AddIcon } from "react-icons/md";
 
 const TodoLsitItemWrapper = styled.div`
   padding: 1rem;
@@ -51,7 +52,7 @@ const Remove = styled.div`
   }
 `;
 
-function TodoListItem({todo: {id, text, checked}, onRemove, onToggle, startDate, setStartDate, diffDate, setDiffdate}) {
+function TodoListItem({todo: {id, text, checked}, doneCount, setDoneCount,handleDoneCount, onRemove, onToggle}) {
   const deadline = new Date(2023, 9, 1);
   const today = new Date();
   const dayGap = deadline.getTime() - today.getTime();
@@ -64,13 +65,16 @@ function TodoListItem({todo: {id, text, checked}, onRemove, onToggle, startDate,
         <p style={{fontSize:'.8rem'}}>D-{dayCount}</p>
       </div>
       <Checkbox checked={checked}
-        onClick={() => { onToggle(id); }}
+        onClick={() => {
+          onToggle(id);
+          checked? setDoneCount(doneCount - 1): setDoneCount(doneCount + 1);
+        }}
       >
         {checked? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
       </Checkbox>
       <Text checked={checked}>{text}</Text>
       <Remove
-        onClick={() => { onRemove(id); }}
+        onClick={() => { onRemove(id);}}
       >
         <MdRemoveCircleOutline/>
       </Remove>
@@ -78,8 +82,4 @@ function TodoListItem({todo: {id, text, checked}, onRemove, onToggle, startDate,
   );
 }
 
-// export default TodoListItem;
-// 리액트에서는 기본적으로 부모 컴포넌트가 렌더링되면 모든 자식 컴포넌트들도 무조건 렌더링 된다
-// React.memo()를 사용하면 자식 컴포넌트에서 props의 변경이 없을 경우 렌더링 막아준다.
-// 사용하는 함수들을 모두 만들어두고 렌더링 시 재사용하는 useCallback()함수를 사용했기 때문에 사용 가능
 export default React.memo(TodoListItem);

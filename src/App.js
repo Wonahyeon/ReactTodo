@@ -18,13 +18,15 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   const [todos, setTodos] = useState([
     {
-      id:1, text: 'dd', deadline: 'yymmdd'
+      id:1, text: 'dd', content:'DD', deadline: 'yymmdd',
+      checked: false
     }
   ]);
-  const [value, setValue] = useState('');
-  const [inputEmpty, setInputEmpty] = useState(true); // 할 일 미입력시
-  const [startDate, setStartDate] = useState(new Date()); // 시작일
-  const [diffDate, setDiffDate] = useState(new Date()); // 마감일
+  const [value, setValue] = useState(''); // todo tile
+  const [content, setContent] = useState(''); // todo content
+  const [inputEmpty, setInputEmpty] = useState(true); // todo title 입력 상태
+  const [startDate, setStartDate] = useState(new Date()); // todo start date
+  const [endDate, setEndDate] = useState(new Date()); // todo end date
 
 
   useEffect(() => {
@@ -38,11 +40,12 @@ function App() {
 
   const nextId = useRef(4);
 
-  const handleInsert = useCallback((text) => {
+  const handleInsert = useCallback((text,content) => {
     const todo = {
       id: uuidv4(),
       text,
-      check: false
+      check: false,
+      content
     };
 
     setTodos(todos => todos.concat(todo));
@@ -65,8 +68,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TodoMainPage/>} />
-        <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} value={value} setValue={setValue} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} diffDate={diffDate} setDiffDate={setDiffDate} startDate={startDate} setStartDate={setStartDate}/>} />
-        <Route path="/todo-list" element={<TodoListPage todos={todos} onRemove={handleRemove} onToggle={handleToggle} diffDate={diffDate} setDiffDate={setDiffDate}/>} />
+        <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} value={value} setValue={setValue} content={content} setContent={setContent} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
+        <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate}/>} />
       </Routes>
     </BrowserRouter>
 

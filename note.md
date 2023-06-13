@@ -39,8 +39,17 @@ https://react-icons.github.io/react-icons/icons?name=md
 npm install react-datepicker --save
 
 [디데이]
-- (TodoInsert) startDate, diffDate state 로그
+- (TodoInsert) startDate, endDate state 로그
 Thu Jun 15 2023 18:56:56 GMT+0900 (한국 표준시)
 
-- (TodoListItem) startDate, diffDate state 로그
-TODO undefined(오류): state 받아오질 않는 듯
+- (TodoListItem) startDate, endDate state 로그
+ undefined(오류): state 받아오질 않는 듯
+
+#0613
+* todo 전체 미완료 완료 개수
+(버그) props 변경없이 페이지 이동만 했는데 완료 개수 초기화됨(재렌더링 되는 거 같음..)
+TODO
+
+* 페이지 이동 이전 상태 유지
+* todos에 id, text(-> title), content, date { start, end, dday }, checked
+* 새로운 객체 checked가 true인(Done) 따로 관리 -> working 밑에 done이 오도록
