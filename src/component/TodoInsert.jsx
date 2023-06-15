@@ -89,6 +89,7 @@ function TodoInsert(props) {
     onInsert(title,content, startDate, endDate);
     setTitle('');
     setContent('');
+    setEndDate(new Date());
     setInputEmpty(false); 
     setInputEmpty(true);
 
@@ -100,8 +101,8 @@ function TodoInsert(props) {
       <label htmlFor='title'>제목</label>
       <input type='text' id='title'
         className='inputStyle'
-        maxLength={10}
-        placeholder='제목을 입력해주세요. (10자이내)'
+        maxLength={20}
+        placeholder='제목을 입력해주세요. (20자이내)'
         value={title}
         onChange={handleChange}
       />
@@ -109,8 +110,8 @@ function TodoInsert(props) {
       <textarea type='text' id='content'
         className='inputStyle'
         style={{height:'8rem', resize: 'none'}}
-        maxLength={50}
-        placeholder='내용을 입력해주세요. (50자 이내)'
+        maxLength={100}
+        placeholder='내용을 입력해주세요. (100자 이내)'
         value={content}
         onChange={handleContent}
       />

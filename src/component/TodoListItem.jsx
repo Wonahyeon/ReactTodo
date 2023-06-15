@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdCheckBox, MdCheckBoxOutlineBlank,MdRemoveCircleOutline } from "react-icons/md";
-import { MdMode as AddIcon } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 const TodoLsitItemWrapper = styled.div`
   padding: 1rem;
   display: flex;
   align-items: center;
+  background: lightsteelblue;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  svg {
+    color: white;
+  }
 
   .deadlineWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-right: 1rem;
+    .diff {
+      font-weight: bold;
+      margin-bottom: .6rem;
+    }
+  }
+  .contentWrapper {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+    flex: 1;
+    .title {
+      font-weight: bold;
+      margin-bottom: .8rem;
+    }
   }
 `;
 
@@ -25,7 +45,7 @@ const Checkbox = styled.div`
   svg {
     /* 아이콘 스타일링 */
     font-size: 1.5rem;
-    color: ${props => props.checked && '#22b8cf'};
+    color: ${props => props.checked && '#24a3e8'};
   }
 `;
 
@@ -36,7 +56,7 @@ const Text = styled.div`
   ${props => props.checked &&
     css`
       color: #adb5bd;
-      text-decoration: line-through;
+      /* text-decoration: line-through; */
     `
   }
 `;
@@ -45,24 +65,27 @@ const Remove = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  color: #ff6b6b;
+  color: #d45959;
   cursor: pointer;
   &:hover {
     color: #ff8787;
   }
 `;
 
-function TodoListItem({todo: {id, title, content, checked, startDate, endDate}, doneCount, setDoneCount,handleDoneCount, onRemove, onToggle}) {
+function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, setDoneCount, onRemove, onToggle, click}) {
   const today = new Date();
-  const dayGap = today.getTime() - endDate.getTime();
+  const dayGap = endDate.getTime() - today.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
-  console.log(startDate);
+
+  const navigate = useNavigate();
 
   return (
-    <TodoLsitItemWrapper>
+    <TodoLsitItemWrapper onClick={() => {
+      navigate("/todo-edit");
+    }}>
       <div className='deadlineWrapper'>
-        <p style={{fontWeight:'bold'}}>{endDate.getMonth() + 1}/{endDate.getDate()}</p>
-        <p style={{fontSize:'.8rem'}}>D-{dayCount}</p>
+        <p className='diff'>{endDate.getMonth() + 1}/{endDate.getDate()}</p>
+        {click && <p>D-{dayCount}</p>}
       </div>
       <Checkbox checked={checked}
         onClick={() => {
@@ -72,8 +95,10 @@ function TodoListItem({todo: {id, title, content, checked, startDate, endDate}, 
       >
         {checked? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
       </Checkbox>
-      <Text checked={checked}>{title}</Text>
-      <Text checked={checked}>{content}</Text>
+      <div className="contentWrapper">
+        <Text className='title' checked={checked}>{title}</Text>
+        {click && <Text checked={checked}>{content}</Text>}
+      </div>
       <Remove
         onClick={() => { onRemove(id);}}
       >

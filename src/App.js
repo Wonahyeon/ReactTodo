@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TodoMainPage from "./component/page/TodoMainPage";
 import TodoInsertPage from "./component/page/TodoInsertPage";
 import TodoListPage from "./component/page/TodoListPage";
+import TodoEdit from "./component/TodoEdit";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -14,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     background: #e9ecef;
   }
   .wrapper {
-    width: 40rem;
+    min-width: 40rem;
     min-height: 30rem;
     margin: 0 auto;
     margin-top: 1rem;
@@ -60,15 +61,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [todos, setTodos] = useState([
-    
-  ]);
+  const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState(''); // todo tile
   const [content, setContent] = useState(''); // todo content
   const [inputEmpty, setInputEmpty] = useState(true); // todo title 입력 상태
   const [startDate, setStartDate] = useState(new Date()); // todo start date
   const [endDate, setEndDate] = useState(new Date()); // todo end date
-
+  const [titleClick, setTitleClick] = useState(false);
+  const [dateClick, setDateClick] = useState(false);
 
   useEffect(() => {
     const dbTodos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -112,7 +112,8 @@ function App() {
       <Routes>
         <Route path="/" element={<TodoMainPage/>} />
         <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} title={title} setTitle={setTitle} content={content} setContent={setContent}  inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
-        <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate}/>} />
+        <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate} />} />
+        <Route path="/todo-edit" element={<TodoEdit/>} />
       </Routes>
     </BrowserRouter>
 
