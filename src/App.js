@@ -13,16 +13,57 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #e9ecef;
   }
+  .wrapper {
+    width: 40rem;
+    min-height: 30rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .header {
+    width: 40rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    svg {
+      color: gray;
+      cursor: pointer;
+    }
+    svg:hover {
+      color: black;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      flex: 1;
+    }
+  }
+  // 모바일
+  @media screen and (max-width: 360px) {
+    .wrapper {
+      width: 20rem;
+      .header {
+        width: 20rem;
+      }
+      .header svg:first-child {
+        display: none;
+      }
+    }
+  }
 `;
 
 function App() {
   const [todos, setTodos] = useState([
-    {
-      id:1, text: 'dd', content:'DD', deadline: 'yymmdd',
-      checked: false
-    }
+    
   ]);
-  const [value, setValue] = useState(''); // todo tile
+  const [title, setTitle] = useState(''); // todo tile
   const [content, setContent] = useState(''); // todo content
   const [inputEmpty, setInputEmpty] = useState(true); // todo title 입력 상태
   const [startDate, setStartDate] = useState(new Date()); // todo start date
@@ -40,12 +81,14 @@ function App() {
 
   const nextId = useRef(4);
 
-  const handleInsert = useCallback((text,content) => {
+  const handleInsert = useCallback((title,content, startDate, endDate) => {
     const todo = {
       id: uuidv4(),
-      text,
-      check: false,
-      content
+      title,
+      content,
+      checked: false,
+      startDate,
+      endDate
     };
 
     setTodos(todos => todos.concat(todo));
@@ -68,7 +111,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TodoMainPage/>} />
-        <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} value={value} setValue={setValue} content={content} setContent={setContent} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
+        <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} title={title} setTitle={setTitle} content={content} setContent={setContent}  inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
         <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate}/>} />
       </Routes>
     </BrowserRouter>

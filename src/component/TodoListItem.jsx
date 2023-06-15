@@ -52,16 +52,16 @@ const Remove = styled.div`
   }
 `;
 
-function TodoListItem({todo: {id, text, checked}, doneCount, setDoneCount,handleDoneCount, onRemove, onToggle}) {
-  const deadline = new Date(2023, 9, 1);
+function TodoListItem({todo: {id, title, content, checked, startDate, endDate}, doneCount, setDoneCount,handleDoneCount, onRemove, onToggle}) {
   const today = new Date();
-  const dayGap = deadline.getTime() - today.getTime();
+  const dayGap = today.getTime() - endDate.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
+  console.log(startDate);
 
   return (
     <TodoLsitItemWrapper>
       <div className='deadlineWrapper'>
-        <p style={{fontWeight:'bold'}}>{deadline.getMonth()}/{deadline.getDate()}</p>
+        <p style={{fontWeight:'bold'}}>{endDate.getMonth() + 1}/{endDate.getDate()}</p>
         <p style={{fontSize:'.8rem'}}>D-{dayCount}</p>
       </div>
       <Checkbox checked={checked}
@@ -72,7 +72,8 @@ function TodoListItem({todo: {id, text, checked}, doneCount, setDoneCount,handle
       >
         {checked? <MdCheckBox/> : <MdCheckBoxOutlineBlank/>}
       </Checkbox>
-      <Text checked={checked}>{text}</Text>
+      <Text checked={checked}>{title}</Text>
+      <Text checked={checked}>{content}</Text>
       <Remove
         onClick={() => { onRemove(id);}}
       >

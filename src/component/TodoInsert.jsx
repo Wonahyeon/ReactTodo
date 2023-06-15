@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { MdOutlineTrendingFlat as NextIcon } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
@@ -68,26 +68,27 @@ const StyledButton = styled.button`
 `;
 
 function TodoInsert(props) {
-  const {onInsert, value, setValue, content, setContent, inputEmpty, setInputEmpty, endDate, setEndDate, startDate, setStartDate} = props;
+  const {onInsert, onContent, title, setTitle, content, setContent, inputEmpty, setInputEmpty, endDate, setEndDate, startDate, setStartDate} = props;
 
   
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setTitle(e.target.value);
     e.target.value ?
       setInputEmpty(false):
       setInputEmpty(true);
-  };
-
+    };
+    
   const handleContent = (e) => {
     setContent(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    onInsert(value);
-    setValue('');
+    onInsert(title,content, startDate, endDate);
+    setTitle('');
+    setContent('');
     setInputEmpty(false); 
     setInputEmpty(true);
 
@@ -101,7 +102,7 @@ function TodoInsert(props) {
         className='inputStyle'
         maxLength={10}
         placeholder='제목을 입력해주세요. (10자이내)'
-        value={value}
+        value={title}
         onChange={handleChange}
       />
       <label htmlFor='content'>내용</label>
@@ -115,13 +116,12 @@ function TodoInsert(props) {
       />
       <div className="datePickerWrapper">
         <label>시작
-          <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="yyyy-MM-dd" locale={ko} >
-            <input type="text" value={startDate}/>
+          <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={startDate} >
           </DatePicker>
         </label>
         <NextIcon/>
         <label>마감
-          <DatePicker selected={endDate} onChange={date => setEndDate(date)} dateFormat="yyyy-MM-dd" >
+          <DatePicker selected={endDate} onChange={date => setEndDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={endDate} >
           </DatePicker>
         </label>
       </div>

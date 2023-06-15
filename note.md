@@ -47,9 +47,12 @@ Thu Jun 15 2023 18:56:56 GMT+0900 (한국 표준시)
 
 #0613
 * todo 전체 미완료 완료 개수
-(버그) props 변경없이 페이지 이동만 했는데 완료 개수 초기화됨(재렌더링 되는 거 같음..)
-TODO
+(오류) props 변경없이 페이지 이동만 했는데 완료 개수 초기화됨(재렌더링 되는 거 같음..)
 
 * 페이지 이동 이전 상태 유지
-* todos에 id, text(-> title), content, date { start, end, dday }, checked
+* todos에 id, text(-> title), content, date -> start, end, checked
 * 새로운 객체 checked가 true인(Done) 따로 관리 -> working 밑에 done이 오도록
+
+#0615
+0613 오류 수정
+(오류) dday 계산
