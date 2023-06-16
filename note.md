@@ -60,8 +60,13 @@ Thu Jun 15 2023 18:56:56 GMT+0900 (한국 표준시)
 #0615
 0614 오류 수정
 (오류) endDate state 기본값 new Date()로 오늘 날짜 받아오는데 
-잘 받아오다가도 가끔 getTime 오류 발생 콘솔 확인 -> endDate 날짜 받아오지 못하고 undefined이 이유
+잘 받아오다가 getTime 오류 발생 콘솔 확인 -> endDate 날짜 받아오지 못하고 undefined??
+
+#0616
+(수정)
+TodoEdit처럼 insert, list도 따로 page 없어도 됨 - 전달할 props 많아서 번거로움
 TODO 수정하기 기능
+
 
 (배포) build settings
 build command CI=false run build

@@ -68,7 +68,7 @@ const StyledButton = styled.button`
 `;
 
 function TodoInsert(props) {
-  const {onInsert, onContent, title, setTitle, content, setContent, inputEmpty, setInputEmpty, endDate, setEndDate, startDate, setStartDate} = props;
+  const {onInsert, title, setTitle, content, setContent, inputEmpty, setInputEmpty, endDate, setEndDate, startDate, setStartDate} = props;
 
   
 

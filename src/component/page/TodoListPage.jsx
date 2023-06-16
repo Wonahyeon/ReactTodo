@@ -11,7 +11,6 @@ import TodoList from '../TodoList';
     margin-bottom: 2rem;
 
     p {
-      border-radius: 3px;
       margin-right: 0.5rem;
       font-size: 0.9rem;
       padding: .2rem;

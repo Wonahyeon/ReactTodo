@@ -49,12 +49,27 @@ const GlobalStyle = createGlobalStyle`
   // 모바일
   @media screen and (max-width: 360px) {
     .wrapper {
-      width: 20rem;
-      .header {
+      min-width: 20rem;
+      min-height: 42rem;
+      position: relative;
+      & > div {
         width: 20rem;
       }
-      .header svg:first-child {
-        display: none;
+      input, textarea {
+        width: 18rem;
+      }
+      .datePickerWrapper > label {
+        width: 8rem;
+      }
+      .datePickerWrapper input {
+        width: 6rem;
+      }
+      button {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        bottom: 1rem;
       }
     }
   }
@@ -67,8 +82,6 @@ function App() {
   const [inputEmpty, setInputEmpty] = useState(true); // todo title 입력 상태
   const [startDate, setStartDate] = useState(new Date()); // todo start date
   const [endDate, setEndDate] = useState(new Date()); // todo end date
-  const [titleClick, setTitleClick] = useState(false);
-  const [dateClick, setDateClick] = useState(false);
 
   useEffect(() => {
     const dbTodos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -113,7 +126,7 @@ function App() {
         <Route path="/" element={<TodoMainPage/>} />
         <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} title={title} setTitle={setTitle} content={content} setContent={setContent}  inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
         <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate} />} />
-        <Route path="/todo-edit" element={<TodoEdit/>} />
+        <Route path="/todo-edit" element={<TodoEdit  todos={todos} setTodos={setTodos} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />} />
       </Routes>
     </BrowserRouter>
 

@@ -27,7 +27,7 @@ function TodoList(props) {
   return (
     <TodoListWrapper>
       <div className="todoList">
-        <p>Working</p>
+        <p>Working..🔥</p>
         {todos.filter((todo) => !todo.checked).map((todo) => {
           return (
             <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}  doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
@@ -35,10 +35,10 @@ function TodoList(props) {
         })}
       </div>
       <div className="todoList">
-        <p>Done</p>
+        <p>Done🤩</p>
         {todos.filter((todo) => todo.checked).map((todo) => {
           return (
-            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate}/>
+            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
           );
         })}
       </div>

@@ -88,7 +88,8 @@ function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, 
         {click && <p>D-{dayCount}</p>}
       </div>
       <Checkbox checked={checked}
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           onToggle(id);
           checked? setDoneCount(doneCount - 1): setDoneCount(doneCount + 1);
         }}
@@ -100,7 +101,10 @@ function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, 
         {click && <Text checked={checked}>{content}</Text>}
       </div>
       <Remove
-        onClick={() => { onRemove(id);}}
+        onClick={(e) => {
+          e.stopPropagation(); 
+          onRemove(id);
+        }}
       >
         <MdRemoveCircleOutline/>
       </Remove>
