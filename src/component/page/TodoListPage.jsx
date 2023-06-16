@@ -32,7 +32,7 @@ import TodoList from '../TodoList';
   `;
 
 function TodoListPage(props) {
-  const {todos, setTodos, onRemove, onToggle,startDate, setStartDate, endDate, setEndDate, dayCount, setDayCount} = props;
+  const {todos, setTodos, onRemove, onToggle, onEdit, startDate, setStartDate, endDate, setEndDate, dayCount, setDayCount} = props;
   const [doneCount, setDoneCount] = useState(0);
   const [titleClick, setTitleClick] = useState(false);
   const [dateClick, setDateClick] = useState(false);
@@ -69,8 +69,8 @@ function TodoListPage(props) {
   const handleClick = () => {
     click ? setClick(false): setClick(true);
   };
-
   const navigate = useNavigate();
+
   return (
     <div className='wrapper'>
       <div className='header'>
@@ -92,7 +92,7 @@ function TodoListPage(props) {
         <p>Working: {todos.length - doneCount}</p>
         <p>Done: {doneCount}</p>
       </TodoListCount>
-      <TodoList todos={todos} setTodos={setTodos} onRemove={onRemove} onToggle={onToggle} endDate={endDate} setEndDate={setEndDate} dayCount={dayCount} setDayCount={setDayCount} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} click={click} setClick={setClick} />
+      <TodoList todos={todos} setTodos={setTodos} onRemove={onRemove} onToggle={onToggle} endDate={endDate} setEndDate={setEndDate} dayCount={dayCount} setDayCount={setDayCount} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} click={click} setClick={setClick} onEdit={onEdit} />
     </div>
   );
 }

@@ -126,7 +126,7 @@ function TodoInsert(props) {
           </DatePicker>
         </label>
       </div>
-      <StyledButton type='submit' disabled={inputEmpty} onClick={handleSubmit}>
+      <StyledButton disabled={inputEmpty} onClick={handleSubmit}>
         추가하기
       </StyledButton>
     </TodoInsertWrapper>

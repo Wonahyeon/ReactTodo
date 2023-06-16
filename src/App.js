@@ -101,7 +101,7 @@ function App() {
       content,
       checked: false,
       startDate,
-      endDate
+      endDate,
     };
 
     setTodos(todos => todos.concat(todo));
@@ -118,6 +118,13 @@ function App() {
       ));
   }, []);
 
+  const handleModify = useCallback((id, title, content,startDate, endDate) => {
+    setTodos(todos => todos.map(todo =>
+      todo.id === id ? {...todo, title, content, startDate, endDate} : todo
+    ));
+  },[]);
+
+
   return (
     <>
     <GlobalStyle />
@@ -125,8 +132,8 @@ function App() {
       <Routes>
         <Route path="/" element={<TodoMainPage/>} />
         <Route path="/todo-write" element={<TodoInsertPage onInsert={handleInsert} title={title} setTitle={setTitle} content={content} setContent={setContent}  inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>} />
-        <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate} />} />
-        <Route path="/todo-edit" element={<TodoEdit  todos={todos} setTodos={setTodos} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />} />
+        <Route path="/todo-list" element={<TodoListPage todos={todos} setTodos={setTodos} onRemove={handleRemove} onToggle={handleToggle} endDate={endDate} setEndDate={setEndDate}/>} />
+        <Route path="/todo-edit/:todoId" element={<TodoEdit  todos={todos} setTodos={setTodos} startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} handleModify={handleModify}/>} />
       </Routes>
     </BrowserRouter>
 

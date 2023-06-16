@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdCheckBox, MdCheckBoxOutlineBlank,MdRemoveCircleOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
@@ -74,17 +74,20 @@ const Remove = styled.div`
 
 function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, setDoneCount, onRemove, onToggle, click}) {
   const today = new Date();
-  const dayGap = endDate.getTime() - today.getTime();
+  const diff = new Date(endDate);
+  const dayGap = diff.getTime() - today.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
 
   const navigate = useNavigate();
 
   return (
-    <TodoLsitItemWrapper onClick={() => {
-      navigate("/todo-edit");
-    }}>
+    <TodoLsitItemWrapper
+      onClick={() => {
+        navigate(`/todo-edit/${id}`);
+      }}
+    >
       <div className='deadlineWrapper'>
-        <p className='diff'>{endDate.getMonth() + 1}/{endDate.getDate()}</p>
+        <p className='diff'>{diff.getMonth() + 1}/{diff.getDate()}</p>
         {click && <p>D-{dayCount}</p>}
       </div>
       <Checkbox checked={checked}

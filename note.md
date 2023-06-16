@@ -60,13 +60,20 @@ Thu Jun 15 2023 18:56:56 GMT+0900 (한국 표준시)
 #0615
 0614 오류 수정
 (오류) endDate state 기본값 new Date()로 오늘 날짜 받아오는데 
-잘 받아오다가 getTime 오류 발생 콘솔 확인 -> endDate 날짜 받아오지 못하고 undefined??
+잘 받아오다가 getTime 오류 발생 콘솔 확인 -> endDate 날짜 받아오는데 string으로 변환되는 문제 발생 string이 오면 다시 object로 변경하면 될듯
 
 #0616
-(수정)
+수정하기 기능 완료
+0615 오류 수정
+(버그) 수정하기에서 제목 수정 안하면 다른 내용 수정해도 버튼 클릭x
+따로 state로 상태 받지않고 각각 유효성 검사해야할듯
+
 TodoEdit처럼 insert, list도 따로 page 없어도 됨 - 전달할 props 많아서 번거로움
-TODO 수정하기 기능
 
 
 (배포) build settings
 build command CI=false run build
+
+(수정)
+enter 기능 key 속성
+state 객체 하나로 관리

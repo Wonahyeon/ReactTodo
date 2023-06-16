@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { MdKeyboardBackspace as BackIcon } from "react-icons/md";
 import { MdOutlineTrendingFlat as NextIcon } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
@@ -69,10 +69,42 @@ transition: 0.2s background ease-in;
 `;
 
 function TodoEdit(props) {
-  const navigate = useNavigate();
-  const { todos,startDate,setStartDate, endDate, setEndDate} = props;
-  
+  const {todos, handleModify} = props;
 
+  const navigate = useNavigate();
+  const {todoId} = useParams();
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  useEffect(() => {
+    const findTodo = todos.find(todo => todo.id === todoId);
+
+    if (findTodo) {
+      setTitle(findTodo.title);
+      setContent(findTodo.content);
+      setStartDate(findTodo.startDate);
+      setEndDate(findTodo.endDate);
+    }
+  }, []);
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+    // if (!value) {
+    //   alert('할일입력');
+    //   return;
+    // }
+  };
+
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleClick = () => {
+    handleModify(todoId, title, content, startDate, endDate);
+    navigate('/todo-list');
+  }
 
   return (
     <div className='wrapper'>
@@ -86,14 +118,16 @@ function TodoEdit(props) {
         <label htmlFor='title'>제목</label>
         <input type='text' id='title'
           className='inputStyle'
-          // placeholder={}
-        />
+          value={title}
+          onChange={handleTitleChange}
+          />
         <label htmlFor='content'>내용</label>
         <textarea type='text' id='content'
           className='inputStyle'
           style={{height:'8rem', resize: 'none'}}
           maxLength={100}
-          // placeholder={}
+          value={content}
+          onChange={handleContentChange}
         />
         <div className="datePickerWrapper">
         <label>시작
@@ -106,7 +140,7 @@ function TodoEdit(props) {
           </DatePicker>
         </label>
       </div>
-        <StyledButton type='submit'>
+        <StyledButton onClick={handleClick}>
           수정하기
         </StyledButton>
       </TodoEditWrapper>

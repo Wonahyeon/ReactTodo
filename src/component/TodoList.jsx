@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
 
@@ -22,7 +22,7 @@ const TodoListWrapper = styled.div`
 `;
 
 function TodoList(props) {
-  const {todos, doneCount, setDoneCount, handleDoneCount, startDate, endDate, onRemove, onToggle, click, setClick} = props;
+  const {todos, doneCount, setDoneCount, handleDoneCount, startDate, endDate, onRemove, onToggle, onEdit ,click, setClick} = props;
 
   return (
     <TodoListWrapper>
@@ -30,7 +30,7 @@ function TodoList(props) {
         <p>Working..🔥</p>
         {todos.filter((todo) => !todo.checked).map((todo) => {
           return (
-            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}  doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
+            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} onEdit={onEdit} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
           );
         })}
       </div>
@@ -38,7 +38,7 @@ function TodoList(props) {
         <p>Done🤩</p>
         {todos.filter((todo) => todo.checked).map((todo) => {
           return (
-            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
+            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} onEdit={onEdit} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
           );
         })}
       </div>
