@@ -24,13 +24,11 @@ const GlobalStyle = createGlobalStyle`
     background: white;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
   }
   .header {
-    width: 40rem;
+    width: 35rem;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 3rem;
     svg {
       color: gray;
@@ -43,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
       font-size: 1.5rem;
       font-weight: bold;
       text-align: center;
+      margin: 0 auto;
       flex: 1;
     }
   }

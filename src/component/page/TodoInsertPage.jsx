@@ -1,5 +1,4 @@
 import React from 'react';
-import { MdFormatListBulleted as ListIcon } from "react-icons/md";
 import { MdKeyboardBackspace as BackIcon } from "react-icons/md";
 import TodoInsert from '../TodoInsert';
 import { useNavigate } from 'react-router-dom';
@@ -11,12 +10,9 @@ function TodoInsertPage(props) {
     <div className='wrapper'>
       <div className='header'>
         <BackIcon onClick={() => {
-          navigate("/");
-        }}/>
-        <h3 className='title'>Todo Write</h3>
-        <ListIcon onClick={() => {
           navigate("/todo-list");
         }}/>
+        <h3 className='title'>Todo Write</h3>
       </div>
       <TodoInsert onInsert={onInsert} title={title} setTitle={setTitle} content={content} setContent={setContent} inputEmpty={inputEmpty} setInputEmpty={setInputEmpty} endDate={endDate} setEndDate={setEndDate} startDate={startDate} setStartDate={setStartDate}/>
     </div>

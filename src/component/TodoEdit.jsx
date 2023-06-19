@@ -90,11 +90,7 @@ function TodoEdit(props) {
   }, []);
 
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-    // if (!value) {
-    //   alert('할일입력');
-    //   return;
-    // }
+    setTitle(e.target.value) ;
   };
 
   const handleContentChange = (e) => {

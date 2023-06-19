@@ -50,6 +50,7 @@ const Checkbox = styled.div`
 `;
 
 const Text = styled.div`
+  max-width: 24rem;
   margin-left: 0.5rem;
   flex: 1; // 차지할 수 있는 모든 영역 차지
 
@@ -74,8 +75,8 @@ const Remove = styled.div`
 
 function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, setDoneCount, onRemove, onToggle, click}) {
   const today = new Date();
-  const diff = new Date(endDate);
-  const dayGap = diff.getTime() - today.getTime();
+  // const diff = new Date(endDate);
+  const dayGap = endDate.getTime() - today.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
 
   const navigate = useNavigate();
@@ -87,8 +88,11 @@ function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, 
       }}
     >
       <div className='deadlineWrapper'>
-        <p className='diff'>{diff.getMonth() + 1}/{diff.getDate()}</p>
-        {click && <p>D-{dayCount}</p>}
+        <p className='diff'>{endDate.getMonth() + 1}/{endDate.getDate()}</p>
+        {click &&
+          <p>D{
+              dayCount > 0 ?  `-${dayCount}` : dayCount === 0 ? '-day' : `+${-dayCount}` 
+            }</p>}
       </div>
       <Checkbox checked={checked}
         onClick={(e) => {

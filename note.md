@@ -64,7 +64,7 @@ Thu Jun 15 2023 18:56:56 GMT+0900 (한국 표준시)
 
 #0616
 수정하기 기능 완료
-0615 오류 수정
+0615 오류 수정 -> endDate object로 변경해서 다른 변수에 담음
 (버그) 수정하기에서 제목 수정 안하면 다른 내용 수정해도 버튼 클릭x
 따로 state로 상태 받지않고 각각 유효성 검사해야할듯
 
@@ -74,6 +74,21 @@ TodoEdit처럼 insert, list도 따로 page 없어도 됨 - 전달할 props 많�
 (배포) build settings
 build command CI=false run build
 
-(수정)
+(권장)
 enter 기능 key 속성
 state 객체 하나로 관리
+
+
+#0617
+* todoListItem title/content text max length 한글 영어 차이
+* todoEdit Invalid time value, date string/object 관련된 문제인듯
+
+* todoInsert backIcon route path :  main -> list (end)
+
+* todoList listIcon delete (end)
+
+* d-day count result:  -- -> + & 0 -> D-day (end)
+
+* Working/Done count result : remove 반영되도록
+
+* app font-style
