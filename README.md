@@ -1,4 +1,7 @@
 # 기본적인 CRUD 기능을 갖춘 기본적인 TODO
+바로가기 > https://wonah-todo.netlify.app/
+
+## preview
 ![Alt text](image.png)
 ![Alt text](image-2.png)
 ![Alt text](image-3.png)
