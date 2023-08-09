@@ -61,7 +61,8 @@ todos에 id, text(-> title), content, date -> start, end, checked
 따로 state로 상태 받지않고 각각 유효성 검사해야할듯
 
 TodoEdit처럼 insert, list도 따로 page 없어도 됨 - 전달할 props 많아서 번거로움
-**반응형 작업(모바일)**
+
+**반응형 작업(모바일) 추가**
 
 (배포) build settings
 build command CI=false run build
