@@ -65,7 +65,7 @@ TodoEdit처럼 insert, list도 따로 page 없어도 됨 - 전달할 props 많�
 **반응형 작업(모바일) 추가**
 
 (배포) build settings
-build command CI=false run build
+build command CI=false npm run build
 
 (권장)
 enter 기능 key 속성
