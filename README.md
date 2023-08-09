@@ -1,4 +1,9 @@
-# 구조
+# 기본적인 CRUD 기능을 갖춘 기본적인 TODO
+![Alt text](image.png)
+![Alt text](image-2.png)
+![Alt text](image-3.png)
+![Alt text](image-4.png)
+## 구조
 App
 - TodoMainPage
   - TodoInsertPage
@@ -8,7 +13,7 @@ App
     - TodoList
       - TodoListItem
 *** 
-### 필요한 패키지 설치 npm install
+### 설치한 패키지 npm install
 react-router-dom styled-components@5.3.11 styled-reset react-icons
 
 > 리액트 단방향성 : 부모가 자식에게만 데이터 줄 수 있음
@@ -16,6 +21,7 @@ react-router-dom styled-components@5.3.11 styled-reset react-icons
 
 오류(해결): state 끌어올리기 해서 해결해야함 state 사용되는 공통된 최상위에 선언해야함 - App에 todos state 선언해야함
 
+## 개발 일지
 ## 0612
 Datepicker 라이브러리 사용
 
