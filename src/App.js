@@ -2,17 +2,18 @@ import { useState, useEffect, useCallback, useRef} from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import { v4 as uuidv4 } from "uuid";
-
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TodoMainPage from "./component/page/TodoMainPage";
-import TodoInsertPage from "./component/page/TodoInsertPage";
-import TodoListPage from "./component/page/TodoListPage";
-import TodoEdit from "./component/TodoEdit";
+import TodoMainPage from "./components/pages/TodoMainPage";
+import TodoInsertPage from "./components/pages/TodoInsertPage";
+import TodoListPage from "./components/pages/TodoListPage";
+import TodoEdit from "./components/TodoEdit";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
   body {
     background: #e9ecef;
+    font-family: 'default_font',sans-serif;
   }
   .wrapper {
     min-width: 40rem;
