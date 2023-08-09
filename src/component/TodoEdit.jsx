@@ -127,12 +127,26 @@ function TodoEdit(props) {
         />
         <div className="datePickerWrapper">
         <label>시작
-          <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={startDate} >
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            dateFormat="yyyy-MM-dd"
+            locale={ko}
+            value={startDate}
+            minDate={startDate}
+          >
           </DatePicker>
         </label>
         <NextIcon/>
         <label>마감
-          <DatePicker selected={endDate} onChange={date => setEndDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={endDate} >
+          <DatePicker
+            selected={endDate}
+            onChange={date => setEndDate(date)} 
+            dateFormat="yyyy-MM-dd" 
+            locale={ko} 
+            value={endDate}
+            minDate={startDate}
+          >
           </DatePicker>
         </label>
       </div>

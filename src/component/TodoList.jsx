@@ -24,6 +24,12 @@ const TodoListWrapper = styled.div`
 function TodoList(props) {
   const {todos, doneCount, setDoneCount, handleDoneCount, startDate, endDate, onRemove, onToggle, onEdit ,click, setClick} = props;
 
+  const handleRemove = (id, checked) => {
+    if (checked) {
+      setDoneCount(doneCount - 1);
+    }
+    onRemove(id);
+  };
   return (
     <TodoListWrapper>
       <div className="todoList">
@@ -38,7 +44,7 @@ function TodoList(props) {
         <p>Done🤩</p>
         {todos.filter((todo) => todo.checked).map((todo) => {
           return (
-            <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle} onEdit={onEdit} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
+            <TodoListItem todo={todo} key={todo.id} onRemove={id => handleRemove(id, todo.checked)} onToggle={onToggle} onEdit={onEdit} doneCount={doneCount} setDoneCount={setDoneCount} handleDoneCount={handleDoneCount} startDate={startDate} endDate={endDate} click={click} setClick={setClick}/>
           );
         })}
       </div>

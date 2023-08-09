@@ -86,9 +86,14 @@ function TodoInsert(props) {
   };
 
   const handleSubmit = (e) => {
+    if (startDate > endDate) {
+      alert("시작일은 마감일보다 빠르거나 같아야 합니다.");
+      return;
+    }
     onInsert(title,content, startDate, endDate);
     setTitle('');
     setContent('');
+    setStartDate(new Date());
     setEndDate(new Date());
     setInputEmpty(false); 
     setInputEmpty(true);
@@ -117,12 +122,26 @@ function TodoInsert(props) {
       />
       <div className="datePickerWrapper">
         <label>시작
-          <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={startDate} >
+          <DatePicker
+            selected={startDate} 
+            onChange={date => setStartDate(date)} 
+            dateFormat="yyyy-MM-dd"
+            locale={ko} 
+            value={startDate}
+            minDate={startDate}
+          >
           </DatePicker>
         </label>
         <NextIcon/>
         <label>마감
-          <DatePicker selected={endDate} onChange={date => setEndDate(date)} dateFormat="yyyy-MM-dd" locale={ko} value={endDate} >
+          <DatePicker
+            selected={endDate}
+            onChange={date => setEndDate(date)} 
+            dateFormat="yyyy-MM-dd" 
+            locale={ko} 
+            value={endDate}
+            minDate={startDate}
+          >
           </DatePicker>
         </label>
       </div>
