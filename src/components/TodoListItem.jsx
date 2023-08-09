@@ -1,18 +1,16 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { MdCheckBox, MdCheckBoxOutlineBlank,MdRemoveCircleOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
-const TodoLsitItemWrapper = styled.div`
+
+const TodoListItemWrapper = styled.div`
   padding: 1rem;
   display: flex;
   align-items: center;
-  background: lightsteelblue;
+  background: #b0c4de;
   margin-bottom: 1rem;
   border-radius: 8px;
-  svg {
-    color: white;
-  }
 
   .deadlineWrapper {
     display: flex;
@@ -45,7 +43,10 @@ const Checkbox = styled.div`
   svg {
     /* 아이콘 스타일링 */
     font-size: 1.5rem;
-    color: ${props => props.checked && '#24a3e8'};
+    color: #ffffff;
+    &:hover {
+    color: #2E435E;
+    }
   }
 `;
 
@@ -66,10 +67,10 @@ const Remove = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  color: #d45959;
+  color: #ffffff;
   cursor: pointer;
   &:hover {
-    color: #ff8787;
+    color: #2E435E;
   }
 `;
 
@@ -82,7 +83,7 @@ function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, 
   const navigate = useNavigate();
 
   return (
-    <TodoLsitItemWrapper
+    <TodoListItemWrapper
       onClick={() => {
         navigate(`/todo-edit/${id}`);
       }}
@@ -115,7 +116,7 @@ function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, 
       >
         <MdRemoveCircleOutline/>
       </Remove>
-    </TodoLsitItemWrapper>
+    </TodoListItemWrapper>
   );
 }
 

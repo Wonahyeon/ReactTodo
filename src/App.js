@@ -14,6 +14,15 @@ const GlobalStyle = createGlobalStyle`
   body {
     background: #e9ecef;
     font-family: 'default_font',sans-serif;
+    /* 드래그 방지 */
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+  }
+  * {
+    font-family: 'default_font',sans-serif;
+
   }
   .wrapper {
     min-width: 40rem;
