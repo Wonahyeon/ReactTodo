@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css} from 'styled-components';
 import { MdCheckBox, MdCheckBoxOutlineBlank,MdRemoveCircleOutline } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
@@ -76,7 +76,6 @@ const Remove = styled.div`
 
 function TodoListItem({todo: {id, title, content, checked, endDate}, doneCount, setDoneCount, onRemove, onToggle, click}) {
   const today = new Date();
-  // const diff = new Date(endDate);
   const dayGap = endDate.getTime() - today.getTime();
   const dayCount = Math.ceil(dayGap / (1000 * 60 * 60 * 24));
 

@@ -94,11 +94,23 @@ function App() {
 
   useEffect(() => {
     const dbTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    dbTodos.forEach(todo => {
+      if(todo.endDate && todo.startDate){
+        todo.endDate = new Date(todo.endDate);
+        todo.startDate = new Date(todo.startDate);
+      }
+    });
     setTodos(dbTodos);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos.map(todo => {
+      return {
+        ...todo,
+        endDate: todo.endDate ? todo.endDate.toISOString() : null,
+        startDate: todo.startDate ? todo.startDate.toISOString() : null,
+      }
+    })));
   }, [todos]);
 
   const nextId = useRef(4);

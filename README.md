@@ -98,3 +98,8 @@ Working/Done count result : remove 반영되도록 추가
 font-style 추가
 
 잘못된 폴더명 변경 : component -> components, page -> pages
+
+## 0817
+endDate.getTime() 오류 수정
+-> local storage에 날짜 데이터 저장할 때는 문자열로 변환하여 저장하고
+-> local storage에서 날짜 데이터를 불러올 때는 문자열을 Date 객체로 변환하여 사용해야함!!
