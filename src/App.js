@@ -79,7 +79,7 @@ const GlobalStyle = createGlobalStyle`
         left: 0;
         right: 0;
         margin: 0 auto;
-        bottom: 1rem;
+        bottom: 2rem;
       }
     }
   }

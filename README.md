@@ -107,4 +107,4 @@ endDate.getTime() 오류 수정
 반응형 작업 모바일 max_width 수정
 
 피드백 - 모바일 환경에서 insert/edit 버튼 아래 있어서 불편
--> min_height 변경
+-> min_height 변경 및 버튼 위치
