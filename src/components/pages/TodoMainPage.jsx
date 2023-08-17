@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { MdMode as AddIcon } from "react-icons/md";
@@ -40,7 +40,7 @@ const TodoMainWrapper = styled.div`
    }
 
    /* 모바일 */
-   @media screen and (max-width: 360px) {
+   @media screen and (max-width: 420px) {
     width: 20rem;
     height: 30rem;
     flex-direction: column;

@@ -103,3 +103,6 @@ font-style 추가
 endDate.getTime() 오류 수정
 -> local storage에 날짜 데이터 저장할 때는 문자열로 변환하여 저장하고
 -> local storage에서 날짜 데이터를 불러올 때는 문자열을 Date 객체로 변환하여 사용해야함!!
+
+반응형 작업 모바일 max_width 수정
+(end!!)

@@ -56,8 +56,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   // 모바일
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 420px) {
     .wrapper {
+      font-size: 1.2rem;
       min-width: 20rem;
       min-height: 42rem;
       position: relative;
