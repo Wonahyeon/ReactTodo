@@ -60,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     .wrapper {
       font-size: 1.2rem;
       min-width: 20rem;
-      min-height: 42rem;
+      min-height: 27rem;
       position: relative;
       & > div {
         width: 20rem;

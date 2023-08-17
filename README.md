@@ -105,4 +105,6 @@ endDate.getTime() 오류 수정
 -> local storage에서 날짜 데이터를 불러올 때는 문자열을 Date 객체로 변환하여 사용해야함!!
 
 반응형 작업 모바일 max_width 수정
-(end!!)
+
+피드백 - 모바일 환경에서 insert/edit 버튼 아래 있어서 불편
+-> min_height 변경
