@@ -11,6 +11,7 @@ const TodoListItemWrapper = styled.div`
   background: #b0c4de;
   margin-bottom: 1rem;
   border-radius: 8px;
+  cursor: pointer;
 
   .deadlineWrapper {
     display: flex;
